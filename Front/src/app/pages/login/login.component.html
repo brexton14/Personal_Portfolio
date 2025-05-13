@@ -1,10 +1,30 @@
-<h2>Login</h2>
-<form>
-  <label for="username">Username</label>
-  <input type="text" id="username" />
+<div class="login-container">
+  <h2>Login to Hayton Equity</h2>
 
-  <label for="password">Password</label>
-  <input type="password" id="password" />
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+    <!-- Username Field -->
+    <label for="username">Username</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      required
+      [(ngModel)]="username"
+    />
 
-  <button type="submit">Log In</button>
-</form>
+    <!-- Password Field -->
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      required
+      [(ngModel)]="password"
+    />
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="!loginForm.form.valid">Log In</button>
+  </form>
+
+  <p class="note">Don't have an account? Contact support to request access.</p>
+</div>

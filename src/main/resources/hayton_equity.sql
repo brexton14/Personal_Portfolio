@@ -1,0 +1,1 @@
+CREATE DATABASE hayton_equity
