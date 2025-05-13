@@ -20,11 +20,12 @@
 
   <!-- Buttons to navigate -->
   <div class="button-group">
-    <button onclick="goToPortfolio()">View Portfolio</button>
-    <button onclick="goToCharts()">View Charts</button>
-    <button onclick="goTologin()">Login</button>
+    <button routerLink="/portfolio">View Portfolio</button>
+    <button routerLink="/charts">View Charts</button>
+    <button routerLink="/login">Login</button>
   </div>
 
+  <router-outlet></router-outlet>
   <!-- Placeholder for charts -->
   <section class="charts-placeholder">
     <p>Charts will appear here.</p>
@@ -32,17 +33,6 @@
 </div>
 
 <script>
-  // Functions to navigate to other parts of the app (replace with routing later)
-  function goToPortfolio() {
-    alert("Navigating to Portfolio...");
-  }
-
-  function goToCharts() {
-    alert("Navigating to Charts...");
-  }
-  function goTologin() {
-    alert("Navigating to Login...")
-  }
 </script>
 </body>
 </html>
