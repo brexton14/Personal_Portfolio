@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9; /* soft white background */
+  color: #000000;
+}
+
+/* Container holds everything centrally */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Header style */
+header {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 15px 25px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* Welcome box styling */
+.welcome-box {
+  background-color: #ffffff;
+  border-left: 5px solid #000000;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.button-group button {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-group button:hover {
+  background-color: #333333;
+}
+
+/* Charts placeholder */
+.charts-placeholder {
+  border: 2px dashed #000000;
+  padding: 40px;
+  text-align: center;
+  color: #555555;
+  border-radius: 10px;
+  font-style: italic;
+}
