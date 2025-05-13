@@ -1,23 +1,34 @@
-<div class="container">
-  <header>
-    <h1>Hayton Equity</h1>
+<div class="hero" *ngIf="showMainLayout">
+  <header class="hero-header">
+    <h1 class="hero-title">Hayton Equity</h1>
+    <div class="dropdown-container">
+      <button class="dropdown-toggle" aria-label="Open navigation menu">Menu</button>
+      <div class="dropdown-menu">
+        <button routerLink="/portfolio">View Portfolio</button>
+        <button routerLink="/charts">View Charts</button>
+        <button *ngIf="!isLoggedIn" (click)="openLoginModal()">Login</button>
+        <button *ngIf="!isLoggedIn" routerLink="/register">Register</button>
+        <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+      </div>
+    </div>
   </header>
 
-  <section class="welcome-box">
-    <p>Welcome to Hayton Equity, your investment dashboard.</p>
-  </section>
-
-  <div class="button-group">
-    <button routerLink="/portfolio">View Portfolio</button>
-    <button routerLink="/charts">View Charts</button>
-
-    <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
-    <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
-  </div>
-
-  <router-outlet></router-outlet>
-
-  <section class="charts-placeholder">
-    <p>Charts will appear here.</p>
+  <section class="hero-content">
+    <div class="hero-box">
+      <p class="hero-message">Welcome to Hayton Equity, your modern investment dashboard.</p>
+    </div>
   </section>
 </div>
+
+<router-outlet></router-outlet>
+
+<div class="login-overlay" *ngIf="showLoginModal" (click)="closeLoginModal()">
+  <div class="login-popup" (click)="$event.stopPropagation()">
+    <app-login></app-login> <!-- Or insert form directly here -->
+  </div>
+</div>
+
+
+<section class="charts-placeholder">
+  <p>Charts will appear here.</p>
+</section>

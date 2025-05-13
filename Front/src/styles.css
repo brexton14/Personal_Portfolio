@@ -1,63 +1,161 @@
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9; /* soft white background */
-  color: #000000;
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f4f4;
+  color: #000;
 }
 
-/* Container holds everything centrally */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* Header style */
-header {
-  background-color: #000000;
-  color: #ffffff;
-  padding: 15px 25px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-/* Welcome box styling */
-.welcome-box {
-  background-color: #ffffff;
-  border-left: 5px solid #000000;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-/* Buttons */
-.button-group {
+/* --- Header --- */
+.hero-header {
+  background-color: #000;
+  color: white;
   display: flex;
-  gap: 15px;
-  margin: 25px 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  overflow: visible;
 }
 
-.button-group button {
-  background-color: #000000;
-  color: #ffffff;
+.hero-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* --- Dropdown Menu --- */
+.dropdown-container {
+  position: relative;
+  z-index: 1002;
+}
+
+.dropdown-toggle {
+  background: transparent;
   border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
+  font-size: 20px;
+  color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 30px;
 }
 
-.button-group button:hover {
-  background-color: #333333;
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 56px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  z-index: 1001;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Charts placeholder */
+.dropdown-container:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f5f5f5;
+}
+
+/* --- Content Offset --- */
+.hero,
+.hero-content,
+.hero-box,
 .charts-placeholder {
-  border: 2px dashed #000000;
-  padding: 40px;
-  text-align: center;
-  color: #555555;
-  border-radius: 10px;
-  font-style: italic;
+  margin-top: 80px; /* Space below fixed header */
 }
+
+/* --- Hero Box --- */
+.hero-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.hero-box {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.hero-message {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* --- Chart Placeholder --- */
+.charts-placeholder {
+  margin: 30px auto;
+  padding: 50px;
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  background: #ffffff;
+  border-radius: 12px;
+  width: 80%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+/* General content padding and width */
+.page-content {
+  padding: 0 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.login-popup {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+
