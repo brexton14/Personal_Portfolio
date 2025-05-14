@@ -3,11 +3,14 @@ import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {NgIf} from '@angular/common';
 import {filter} from 'rxjs';
 import {LoginComponent} from './pages/login/login.component';
+import {FormsModule} from '@angular/forms';
+import {BtcChartComponent} from './widgets/btc-chart/btc-chart.component';
+import {EthChartComponent} from './widgets/eth-chart/eth-chart.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, NgIf, LoginComponent],
+  imports: [RouterOutlet, RouterLink, NgIf, LoginComponent, FormsModule, BtcChartComponent, EthChartComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -40,5 +43,6 @@ export class AppComponent {
   onEscape(event: KeyboardEvent) {
     this.closeLoginModal();
   }
+
 }
 

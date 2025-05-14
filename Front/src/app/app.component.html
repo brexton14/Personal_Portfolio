@@ -4,6 +4,7 @@
     <div class="dropdown-container">
       <button class="dropdown-toggle" aria-label="Open navigation menu">Menu</button>
       <div class="dropdown-menu">
+        <button routerLink="/">Home</button>
         <button routerLink="/portfolio">View Portfolio</button>
         <button routerLink="/charts">View Charts</button>
         <button *ngIf="!isLoggedIn" (click)="openLoginModal()">Login</button>
@@ -19,16 +20,29 @@
     </div>
   </section>
 </div>
-
-<router-outlet></router-outlet>
-
-<div class="login-overlay" *ngIf="showLoginModal" (click)="closeLoginModal()">
-  <div class="login-popup" (click)="$event.stopPropagation()">
-    <app-login></app-login> <!-- Or insert form directly here -->
+<div class="chart-scroll-wrapper">
+  <div class="chart-row">
+    <div class="chart-card">
+      <h3>Bitcoin (BTC)</h3>
+      <app-btc-chart></app-btc-chart>
+    </div>
+    <div class="chart-card">
+      <h3>Ethereum (ETH)</h3>
+      <app-eth-chart></app-eth-chart>
+    </div>
   </div>
 </div>
 
 
-<section class="charts-placeholder">
-  <p>Charts will appear here.</p>
-</section>
+
+<router-outlet></router-outlet>
+
+
+<!-- Modal container -->
+<div class="login-overlay" *ngIf="showLoginModal" (click)="closeLoginModal()">
+  <div class="login-popup" (click)="$event.stopPropagation()">
+    <app-login></app-login>
+  </div>
+</div>
+
+
