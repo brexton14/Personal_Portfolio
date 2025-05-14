@@ -1,6 +1,6 @@
 import {Component, HostListener} from '@angular/core';
 import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
-import {NgIf} from '@angular/common';
+import {NgIf, NgOptimizedImage} from '@angular/common';
 import {filter} from 'rxjs';
 import {LoginComponent} from './pages/login/login.component';
 import {FormsModule} from '@angular/forms';
@@ -10,7 +10,7 @@ import {EthChartComponent} from './widgets/eth-chart/eth-chart.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, NgIf, LoginComponent, FormsModule, BtcChartComponent, EthChartComponent],
+  imports: [RouterOutlet, RouterLink, NgIf, LoginComponent, FormsModule, BtcChartComponent, EthChartComponent, NgOptimizedImage],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -24,9 +24,9 @@ export class AppComponent {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        this.showMainLayout = !event.url.includes('/login');
+        this.showMainLayout = event.url === '/';
         this.isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-      })
+      });
   }
   logout() {
     localStorage.removeItem('loggedIn');
