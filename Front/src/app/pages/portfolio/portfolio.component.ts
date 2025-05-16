@@ -2,22 +2,42 @@ import { Component } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { AppComponent } from '../../app.component';
 import {RouterLink} from '@angular/router';
-import {NgIf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
+import {HttpClient} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   imports: [
     RouterLink,
-    NgIf
+    NgIf,
+    FormsModule,
+    NgForOf
   ],
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent {
+  city: string = '';
+  scrapeResults: any[] = [];
+
   constructor(
+    private http: HttpClient,
     public authService: AuthService,
     private appComponent: AppComponent
   ) {}
+  runScraper() {
+    this.http.post<any[]>('http://localhost:8080/api/scraper', { city: this.city }).subscribe(
+      res => {
+        console.log('Response:', res); // ✅ Confirm in browser console
+        this.scrapeResults = res;
+      },
+      err => {
+        console.error('Error:', err);
+        alert(err.error.error || 'Something went wrong');
+      }
+    );
+  }
 
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
@@ -34,7 +54,4 @@ export class PortfolioComponent {
     this.appComponent.openRegisterModal();
   }
 
-  closeRegisterModal(): void {
-    this.appComponent.closeRegisterModal();
-  }
 }

@@ -1,5 +1,5 @@
 <header class="top-bar">
-  <span class="site-name">Brexton Thomas</span>
+  <span class="site-name">Brexton Thomas - Portfolio</span>
   <div class="dropdown-container">
     <button class="dropdown-toggle" aria-label="Open navigation menu">Menu</button>
     <div class="dropdown-menu">
@@ -16,6 +16,41 @@
 <div class="main-content">
   <div class="blur-overlay">
     <h2>Your Portfolio</h2>
-    <!-- Add portfolio items below -->
+    <div class="chart-row">
+      <!-- Web Data Scraper Project Card -->
+      <div class="chart-card">
+        <h3>Web Data Scraper (Python)</h3>
+        <form (submit)="runScraper()">
+          <input type="text" placeholder="Enter city..." [(ngModel)]="city" name="city" required>
+          <button type="submit">Scrape</button>
+        </form>
+
+        <div *ngIf="scrapeResults.length > 0">
+          <h4>Results:</h4>
+          <ul>
+            <li *ngFor="let item of scrapeResults">
+              <strong>{{ item.title }}</strong><br>
+              {{ item.location }}<br>
+              <a [href]="item.link" target="_blank">View Item</a>
+            </li>
+          </ul>
+        </div>
+        <a href="https://github.com/brexton14/web-data-scraper" target="_blank">View Code on GitHub</a>
+      </div>
+      <!-- Car Parts Website Project -->
+      <div class="chart-card">
+        <h3>Car Parts Website (Full-Stack)</h3>
+        <p>
+          A responsive e-commerce website for browsing and purchasing car parts. Includes authentication, shopping cart,
+          and admin-side order control.
+        </p>
+        <ul>
+          <li>🚗 Real-time product browsing with category filters</li>
+          <li>🔐 Auth + Registration using Spring Security</li>
+          <li>🛠 Built with: Java, Spring Boot, HTML, CSS, Angular</li>
+        </ul>
+        <a href="https://github.com/brexton14/car-parts-website" target="_blank">View Code on GitHub</a>
+      </div>
+    </div>
   </div>
 </div>
