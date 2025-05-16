@@ -1,16 +1,32 @@
-<div class="about-wrapper">
-  <h2>About Me</h2>
-  <img src="/family.jpg" alt="Brexton Thomas" class="about-photo">
-  <p>
-    Hi! I'm Brexton Thomas, a veteran and passionate software developer with a love for modern web technologies and crypto analytics.
-  </p>
-  <p>
-    I specialize in Angular + Spring Boot full-stack apps and enjoy creating tools that are both useful and visually sharp.
-  </p>
-  <ul class="about-highlights">
-    <li>🎖 3 years in the Army with 2 AAMs</li>
-    <li>🎓 CS major at WGU, graduating May 2025</li>
-    <li>🧠 Interests: Crypto, AI, automation, and gaming</li>
-    <li>📍 Based in Florida, building my portfolio</li>
-  </ul>
+<header class="top-bar">
+  <span class="site-name">Brexton Thomas</span>
+  <div class="dropdown-container">
+    <button class="dropdown-toggle" aria-label="Open navigation menu">Menu</button>
+    <div class="dropdown-menu">
+      <button routerLink="/">Home</button>
+      <button routerLink="/portfolio">View Portfolio</button>
+      <button routerLink="/about">About Me</button>
+      <button *ngIf="!isLoggedIn" (click)="openLoginModal()">Login</button>
+      <button *ngIf="!isLoggedIn" (click)="openRegisterModal()">Register</button>
+      <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</header>
+
+<div class="main-content">
+  <div class="blur-overlay">
+    <div class="about-wrapper">
+      <h2>About Me</h2>
+      <img src="/family.jpg" alt="Brexton Thomas" class="about-photo">
+      <p>
+        Hi! I'm Brexton Thomas, I’m a dedicated computer science student
+        and aspiring full-stack developer with a passion for building efficient and meaningful digital solutions.
+        As a proud father to my daughter Aria and a husband, I value discipline, balance, and continuous growth. Outside of technology,
+        I enjoy playing video games, staying active at the gym, and following the world of cryptocurrency.
+        My experience in the U.S. Army taught me resilience and leadership under pressure—skills I now apply to solving technical challenges.
+        I’m always looking to expand my knowledge and collaborate on projects that have real-world impact.
+        Whether working independently or as part of a team, I bring persistence, creativity, and a problem-solving mindset to everything I do.
+      </p>
+    </div>
+  </div>
 </div>

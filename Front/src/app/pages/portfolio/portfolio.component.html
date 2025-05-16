@@ -1,2 +1,21 @@
-<h2>Your Portfolio</h2>
+<header class="top-bar">
+  <span class="site-name">Brexton Thomas</span>
+  <div class="dropdown-container">
+    <button class="dropdown-toggle" aria-label="Open navigation menu">Menu</button>
+    <div class="dropdown-menu">
+      <button routerLink="/">Home</button>
+      <button routerLink="/portfolio">View Portfolio</button>
+      <button routerLink="/about">About Me</button>
+      <button *ngIf="!isLoggedIn" (click)="openLoginModal()">Login</button>
+      <button *ngIf="!isLoggedIn" (click)="openRegisterModal()">Register</button>
+      <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</header>
 
+<div class="main-content">
+  <div class="blur-overlay">
+    <h2>Your Portfolio</h2>
+    <!-- Add portfolio items below -->
+  </div>
+</div>

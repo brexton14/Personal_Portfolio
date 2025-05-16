@@ -11,4 +11,10 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, { username, password }, { responseType: 'text' });
   }
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token'); // Adjust based on your auth logic
+  }
+  logout(): void {
+    localStorage.removeItem('token');
+  }
 }
