@@ -19,23 +19,40 @@
     <div class="chart-row">
       <!-- Web Data Scraper Project Card -->
       <div class="chart-card">
-        <h3>Web Data Scraper (Python)</h3>
-        <form (submit)="runScraper()">
+        <h3>Run Web Data Scraper</h3>
+
+        <form (submit)="runScraper()" class="scraper-form">
           <input type="text" placeholder="Enter city..." [(ngModel)]="city" name="city" required>
+          <p class="city-list">
+            Available cities: Saint Petersburg, Tampa, Trinity, Wesley Chapel, Zephyrhills, Ybor, New Port Richey, Holiday, Brandon, Clearwater, Odessa
+          </p>
           <button type="submit">Scrape</button>
+          <button type="button" class="clear-btn" (click)="clearResults()" *ngIf="scrapeResults.length > 0">Clear</button>
         </form>
 
-        <div *ngIf="scrapeResults.length > 0">
-          <h4>Results:</h4>
+        <div class="results-box" *ngIf="scrapeResults.length > 0">
+          <h4>Results for "{{ city }}"</h4>
           <ul>
             <li *ngFor="let item of scrapeResults">
               <strong>{{ item.title }}</strong><br>
-              {{ item.location }}<br>
-              <a [href]="item.link" target="_blank">View Item</a>
+              <span>{{ item.location }}</span><br>
+              <a [href]="item.link" target="_blank">View Listing</a>
             </li>
           </ul>
         </div>
-        <a href="https://github.com/brexton14/web-data-scraper" target="_blank">View Code on GitHub</a>
+        <!-- If empty results -->
+        <p *ngIf="searchAttempted && scrapeResults.length === 0" class="no-results">
+          No results found for "{{ city }}". Try another city from the list below.
+        </p>
+
+        <p class="code-description">
+          This program scrapes Craigslist for free item listings in Florida cities using Python and BeautifulSoup. Results update in real time and are filtered by your selected city.
+        </p>
+        <a class="github-link" href="https://github.com/brexton14/DataScraper-Py-" target="_blank">
+          <img ngSrc="/github-icon.svg" alt="GitHub" width="18" style="vertical-align: middle; margin-right: 6px;"
+               height="18">
+          View Code on GitHub
+        </a>
       </div>
       <!-- Car Parts Website Project -->
       <div class="chart-card">
@@ -45,11 +62,27 @@
           and admin-side order control.
         </p>
         <ul>
-          <li>🚗 Real-time product browsing with category filters</li>
-          <li>🔐 Auth + Registration using Spring Security</li>
-          <li>🛠 Built with: Java, Spring Boot, HTML, CSS, Angular</li>
+          <li>Real-time product browsing with category filters</li>
+          <li>Built with: Java, Spring Boot, HTML, CSS, Angular</li>
         </ul>
-        <a href="https://github.com/brexton14/car-parts-website" target="_blank">View Code on GitHub</a>
+        <a class="github-link" href="https://github.com/brexton14/Car-Part-Web" target="_blank">
+          <img ngSrc="/github-icon.svg" alt="GitHub" width="18" style="vertical-align: middle; margin-right: 6px;"
+               height="18">
+          View Code on GitHub
+        </a>
+      </div>
+      <div class="chart-card">
+        <h3>This Website</h3>
+        <p>
+        This portfolio site was built using Angular and Spring Boot to showcase my full-stack development skills.
+        It includes custom styling, modal-based login/register, a real-time web scraper tool powered by JSoup,
+        and responsive routing for project views. All code is connected through a secure backend API with CORS integration.
+      </p>
+        <a class="github-link" href="https://www.linkedin.com/in/brexton-thomas-b788a0326/" target="_blank">
+          <img ngSrc="/LinkedIn-Icon.svg" alt="GitHub" width="18" style="vertical-align: middle; margin-right: 6px;"
+               height="18">
+          Contact Me!
+        </a>
       </div>
     </div>
   </div>
