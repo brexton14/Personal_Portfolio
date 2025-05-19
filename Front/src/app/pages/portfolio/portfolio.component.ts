@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { AppComponent } from '../../app.component';
 import {RouterLink} from '@angular/router';
 import {NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {environment} from '../../../enviroments/enviroment.prod';
 
 @Component({
   selector: 'app-portfolio',
@@ -31,15 +32,16 @@ export class PortfolioComponent {
   runScraper() {
     this.searchAttempted = true;
 
-    this.http.post<any[]>('http://localhost:8080/api/scraper', { city: this.city }).subscribe(
-      res => {
-        this.scrapeResults = res;
-      },
-      err => {
-        this.scrapeResults = [];
-        alert(err.error?.error || 'Something went wrong');
-      }
-    );
+    this.http.post<any[]>(`${environment.apiUrl}/api/scraper`, { city: this.city })
+      .subscribe(
+        res => {
+          this.scrapeResults = res;
+        },
+        err => {
+          console.error('Error:', err);
+        }
+      );
+
   }
 
 

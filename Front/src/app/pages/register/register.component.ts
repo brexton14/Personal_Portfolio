@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import {environment} from '../../../enviroments/enviroment.prod';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,7 @@ export class RegisterComponent {
       password: this.password
     };
 
-    this.http.post('http://localhost:8080/api/auth/register', payload, { responseType: 'text' })
+    this.http.post(`${environment.apiUrl}/api/register`, payload, { responseType: 'text' })
       .subscribe({
         next: () => {
           this.successMessage = 'Account created successfully!';
