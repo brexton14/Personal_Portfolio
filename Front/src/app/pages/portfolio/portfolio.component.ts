@@ -5,7 +5,7 @@ import {RouterLink} from '@angular/router';
 import {NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import {environment} from '../../../enviroments/enviroment.prod';
+import {environment} from '../../../environments/environment.prod';
 
 @Component({
   selector: 'app-portfolio',
