@@ -9,7 +9,7 @@ frontend:
       commands:
         - npx ng build --configuration production
   artifacts:
-    baseDirectory: Front/dist/front
+    baseDirectory: Front/dist/front/browser
     files:
       - '**/*'
   cache:
