@@ -27,7 +27,7 @@ export class RegisterComponent {
       password: this.password
     };
 
-    this.http.post('http://localhost:8080/api/auth/register', payload, { responseType: 'text' })
+    this.http.post('http://backendportfolio-env.eba-qts2efv7.us-east-1.elasticbeanstalk.com/api/auth/register', payload, { responseType: 'text' })
       .subscribe({
         next: () => {
           this.successMessage = 'Account created successfully!';

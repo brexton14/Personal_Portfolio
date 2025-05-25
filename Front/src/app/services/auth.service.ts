@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private baseUrl = 'http://localhost:8080/api/auth'; // Your backend URL
+  private baseUrl = 'http://backendportfolio-env.eba-qts2efv7.us-east-1.elasticbeanstalk.com/api/auth'; // Your backend URL
 
   constructor(private http: HttpClient) {}
 
