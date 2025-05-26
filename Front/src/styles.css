@@ -1,259 +1,164 @@
 /* Import font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
+:root {
+  --bg: #0e0e0e;
+  --text: #ffffff;
+  --subtext: #aaa;
+  --accent: #4ab3ff;
+  --card-bg: #1c1c1c;
+  --border: #333;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--bg);
+  color: var(--text);
+}
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-/* --- Header --- */
-.hero-header, .top-bar {
-  background-color: #000;
-  color: white;
+/*  Header  */
+.top-bar {
+  background-color: var(--bg);
+  color: var(--text);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 24px;
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 40px;
+  height: 56px;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  overflow: visible;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.site-name {
+  font-size: 24px;
+  font-weight: 600;
 }
 
-.hero-title, .site-name {
-  font-size: 30px;
-  font-weight: 700;
-  margin: 0;
-}
-
-/* --- Dropdown Menu --- */
+/* Dropdown Menu  */
 .dropdown-container {
   position: relative;
-  z-index: 1002;
 }
-
 .dropdown-toggle {
-  background: transparent;
+  background: none;
   border: none;
-  font-size: 20px;
-  color: white;
+  color: var(--text);
+  font-size: 18px;
   cursor: pointer;
   padding: 30px;
 }
-
 .dropdown-menu {
   display: none;
   position: absolute;
   top: 56px;
   right: 0;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 8px 16px var(--shadow);
   min-width: 160px;
   z-index: 1001;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  transition: all 0.2s ease;
 }
 
 .dropdown-container:hover .dropdown-menu {
   display: block;
-  opacity: 1;
-  transform: translateY(0);
 }
-
 .dropdown-menu button {
-  display: block;
   width: 100%;
   padding: 12px 16px;
   background: none;
   border: none;
   text-align: left;
-  font-size: 14px;
-  color: #000;
+  font-size: 15px;
+  color: var(--text);
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 .dropdown-menu button:first-child {
-  font-weight: bold;
-  border-bottom: 1px solid #eee;
   margin-bottom: 5px;
 }
-
 .dropdown-menu button:hover {
-  background-color: #f5f5f5;
+  background: #222;
 }
 
-/* --- Layout --- */
+/* Layout  */
 .layout {
   display: flex;
   margin-top: 56px;
 }
-
 .left-sidebar {
-  position: fixed;
-  top: 56px;
-  left: 0;
-  width: 150px;
-  height: calc(100vh - 56px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-  z-index: 5;
+  display: none;
 }
 
-.left-sidebar img {
-  width: 200px;
-  height: auto;
-  margin: 16px 0;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-
-/* --- Main Content --- */
+/*  Main Content  */
 .main-content {
-  margin-left: 160px;
-  padding: 40px;
-  width: 100%;
-  background: url('/bg.gif') center center / cover no-repeat;
+  flex-grow: 1;
+  padding: 60px 30px;
+  background: var(--bg);
   min-height: 100vh;
-  box-sizing: border-box;
   position: relative;
   z-index: 1;
-  overflow: hidden;
 }
 
-.blur-overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  z-index: -1;
-}
+/* Welcome Section */
 .welcome-text {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 40px 0 30px;
+  font-size: 28px;
+  font-weight: 600;
   text-align: center;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 12px 20px;
-  border-radius: 12px;
+  margin-bottom: 40px;
+  margin-top: 40px;
 }
 
-/* --- Hero Box --- */
-.hero-box {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  border-radius: 20px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-  padding: 70px;
-  max-width: 800px;
-  width: 100%;
-  text-align: center;
-  overflow: visible;
-  color: #000;
-}
-
-/* --- Image Row --- */
-.image-row {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 24px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.family-photo,
-.marvel-image {
-  width: 300px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-}
-
-.marvel-rivals-frame {
-  border: 4px solid #000000;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(43, 32, 32, 0.5);
-}
-
-/* --- Charts --- */
+/* Chart Card */
 .chart-scroll-wrapper {
   overflow-x: auto;
   padding: 0 20px;
 }
-
 .chart-row {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  gap: 24px;
   justify-content: center;
+  gap: 24px;
 }
-
 .chart-card {
-  flex: 0 0 auto;
-  min-width: 400px;
-  max-width: 600px;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--card-bg);
   padding: 24px;
-  border-radius: 12px;
-  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px var(--shadow);
+  color: var(--text);
+  min-width: 320px;
+  max-width: 500px;
 }
-
 .chart-card h3 {
   text-align: center;
-  margin-bottom: 10px;
-  font-size: 18px;
+  margin-bottom: 12px;
+  font-size: 20px;
 }
 
-/* --- Social Links --- */
+/* Social Links */
 .social-links {
-  margin-top: 40px;
   text-align: center;
-  font-size: 16px;
-  color: #ccc;
+  margin-top: 60px;
 }
-
 .social-links a {
-  color: #ffffff;
+  color: var(--accent);
   text-decoration: none;
-  margin: 0 10px;
+  font-weight: 500;
+  margin: 0 12px;
+  transition: color 0.2s ease;
 }
 
 .social-links a:hover {
-  text-decoration: underline;
+  color: #fff;
 }
 
-/* --- Login Overlay --- */
-.login-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  backdrop-filter: blur(8px);
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
+/* Login Overlay */
+.login-overlay,
 .register-overlay {
   position: fixed;
   top: 0;
@@ -262,47 +167,41 @@ body {
   height: 100vh;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  background-color: transparent; /* no blackout */
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
 }
-
-.login-popup {
-  background-color: #fff;
-  border-radius: 14px;
-  padding: 40px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease-in-out;
+.login-popup input:focus,
+.register-container input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 4px var(--accent);
 }
-
 .login-popup h2 {
   margin-bottom: 20px;
   font-size: 24px;
   font-weight: 600;
-  color: #000;
+  color: var(--text);
   text-align: center;
 }
-
 .login-popup label {
   display: block;
   margin: 10px 0 6px;
   font-weight: 500;
-  color: #333;
+  color: var(--subtext);
 }
-
 .login-popup input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   border-radius: 6px;
   margin-bottom: 15px;
   font-size: 14px;
+  background: #111;
+  color: var(--text);
 }
-
 .login-popup button {
   width: 100%;
   padding: 12px;
@@ -315,39 +214,35 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-
 .login-popup button:hover {
   background-color: #333;
 }
 
-/* --- Animation --- */
+/* Animation  */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-/* Applies to the entire page or a specific container */
+
+/* ScrollBar */
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #111; /* dark background */
-  border-radius: 10px;
+  background: #111;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #444;  /* gray thumb */
+  background: #444;
   border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #888; /* lighter on hover */
+  background: #888;
 }
 
 /* Firefox support */
@@ -355,26 +250,57 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #444 #111;
 }
-.about-wrapper {
-  max-width: 800px;
-  margin: 80px auto;
+
+/* About Page */
+.about-section {
+  max-width: 700px;
+  margin: 100px auto 60px;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 14px;
-  color: #fff;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px var(--shadow);
   text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
 }
-
 .about-photo {
-  width: 250px;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+.about-heading {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.about-text {
+  font-size: 16px;
+  color: var(--subtext);
+  line-height: 1.6;
 }
 
-.about-highlights {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
+/*Portfolio*/
+
+.portfolio-heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: var(--text);
+}
+.chart-card {
+  animation: fadeIn 0.4s ease-in-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+.chart-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.chart-card:nth-child(3) {
+  animation-delay: 0.6s;
 }
 .scraper-form {
   display: flex;
@@ -382,26 +308,29 @@ body {
   flex-wrap: wrap;
   margin-bottom: 20px;
 }
-
 .scraper-form input {
   flex: 1;
   padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #555;
+  border-radius: 6px;
+  border: 1px solid var(--border);
   background-color: #111;
-  color: #eee;
+  color: var(--text);
   font-size: 15px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+.scraper-form input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 4px var(--accent);
   outline: none;
 }
-
 .scraper-form button {
   padding: 12px 18px;
   font-size: 15px;
   font-weight: 500;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  background: linear-gradient(145deg, #0066ff, #0055cc);
+  background: linear-gradient(145deg, var(--accent), #0055cc);
   color: white;
   box-shadow: 0 2px 8px rgba(0, 102, 255, 0.4);
   transition: background 0.3s ease, transform 0.1s ease;
@@ -411,16 +340,13 @@ body {
   background: linear-gradient(145deg, #0055cc, #0044aa);
   transform: translateY(-1px);
 }
-
 .clear-btn {
   background: linear-gradient(145deg, #8b0000, #5c0000);
   box-shadow: 0 2px 8px rgba(255, 0, 0, 0.3);
 }
-
 .clear-btn:hover {
   background: linear-gradient(145deg, #a00000, #6a0000);
 }
-
 .results-box {
   max-height: 450px;
   overflow-y: auto;
@@ -430,32 +356,28 @@ body {
   border: 1px solid #444;
   color: #ddd;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.3s ease-in-out;
 }
-
 .results-box h4 {
   font-size: 18px;
   margin-bottom: 16px;
   color: #4ab3ff;
 }
-
 .results-box ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .results-box li {
   margin-bottom: 20px;
   padding-bottom: 14px;
   border-bottom: 1px solid #333;
 }
-
 .results-box a {
   color: #4ab3ff;
   text-decoration: none;
   font-weight: 500;
 }
-
 .results-box a:hover {
   text-decoration: underline;
   color: #82cfff;
@@ -465,7 +387,6 @@ body {
   color: #aaa;
   margin-top: 8px;
 }
-
 .no-results {
   font-size: 15px;
   color: #888;
@@ -473,24 +394,21 @@ body {
   text-align: center;
 }
 
+/* GitHub/LinkedIn Buttons */
 .github-link {
   display: inline-block;
-  margin-top: 16px;
-  padding: 8px 14px;
-  font-weight: 600;
-  font-size: 15px;
-  color: #4ab3ff;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid #4ab3ff;
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
   border-radius: 8px;
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 0 8px rgba(0, 102, 255, 0.2);
 }
 
 .github-link:hover {
-  color: #ffffff;
-  background: #4ab3ff;
-  box-shadow: 0 0 12px rgba(0, 102, 255, 0.4);
+  background: var(--accent);
+  color: #000;
 }
-

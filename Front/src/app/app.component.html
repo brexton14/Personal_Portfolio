@@ -14,46 +14,39 @@
   </div>
 </header>
 
-<!-- Sidebar + Main layout -->
+<!-- Layout -->
 <div class="layout" *ngIf="showMainLayout">
+  <div class="main-content fade-in">
+    <div class="blur-overlay"></div>
 
-  <!-- Overlapping left sidebar with photos -->
-  <div class="left-sidebar">
-    <img src="/family.jpg" alt="Family Photo">
-    <img src="/marvel-rivals.jpg" alt="Marvel Rivals">
-    <img src="/baby.jpg" alt="Baby">
-    <img src="/dog.jpg" alt="Dog">
-    <img src="/bit.jpg" alt="Bitcoin">
-  </div>
+    <!-- Welcome Message -->
+    <div class="welcome-text">
+      Welcome to my world — discover my projects and passions
+    </div>
 
-  <!-- Main content area -->
-  <div class="main-content">
-    <div class="blur-overlay">
-      <div class="welcome-text">
-        Welcome to my world — discover my projects, and passions
+    <!-- Charts -->
+    <div class="chart-row">
+      <div class="chart-card">
+        <h3>Bitcoin (BTC)</h3>
+        <app-btc-chart></app-btc-chart>
       </div>
-
-      <!-- Charts -->
-      <div class="chart-row">
-        <div class="chart-card">
-          <h3>Bitcoin (BTC)</h3>
-          <app-btc-chart></app-btc-chart>
-        </div>
-        <div class="chart-card">
-          <h3>Ethereum (ETH)</h3>
-          <app-eth-chart></app-eth-chart>
-        </div>
+      <div class="chart-card">
+        <h3>Ethereum (ETH)</h3>
+        <app-eth-chart></app-eth-chart>
       </div>
+    </div>
 
-      <!-- Social Links -->
-      <div class="social-links">
-        <a class="github-link" href="https://github.com/brexton14" target="_blank">
-          <img ngSrc="/github-icon.svg" alt="GitHub" width="18" style="vertical-align: middle; margin-right: 6px;"
-                                                                                        height="18">Projects On GitHub!</a> |
-        <a class="github-link" href="https://www.linkedin.com/in/brexton-thomas-b788a0326/" target="_blank">
-          <img ngSrc="/LinkedIn-Icon.svg" alt="GitHub" width="18" style="vertical-align: middle; margin-right: 6px;"
-               height="18">Connect on LinkedIn!</a>
-      </div>
+    <!-- Social Links -->
+    <div class="social-links">
+      <a class="github-link" href="https://github.com/brexton14" target="_blank">
+        <img ngSrc="/github-icon.svg" alt="GitHub" width="18" height="18" style="vertical-align: middle; margin-right: 6px;">
+        Projects on GitHub
+      </a>
+      |
+      <a class="github-link" href="https://www.linkedin.com/in/brexton-thomas-b788a0326/" target="_blank">
+        <img ngSrc="/LinkedIn-Icon.svg" alt="LinkedIn" width="18" height="18" style="vertical-align: middle; margin-right: 6px;">
+        Connect on LinkedIn
+      </a>
     </div>
   </div>
 </div>
@@ -61,14 +54,14 @@
 <!-- Angular router outlet -->
 <router-outlet></router-outlet>
 
-<!-- Register modal -->
+<!-- Register Modal -->
 <div class="register-overlay" *ngIf="showRegisterModal" (click)="closeRegisterModal()">
   <div class="login-popup" (click)="$event.stopPropagation()">
     <app-register></app-register>
   </div>
 </div>
 
-<!-- Login modal -->
+<!-- Login Modal -->
 <div class="login-overlay" *ngIf="showLoginModal" (click)="closeLoginModal()">
   <div class="login-popup" (click)="$event.stopPropagation()">
     <app-login></app-login>
