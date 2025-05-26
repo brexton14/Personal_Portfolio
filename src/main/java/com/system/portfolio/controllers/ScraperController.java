@@ -8,6 +8,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/scraper")
+@CrossOrigin(origins = "https://thebrextonexperience.com/")
 public class ScraperController {
 
     @PostMapping
