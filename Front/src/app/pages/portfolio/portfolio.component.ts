@@ -5,7 +5,7 @@ import {RouterLink} from '@angular/router';
 import {NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-
+import {environment} from '../../../environments/environment.prod';
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -31,7 +31,7 @@ export class PortfolioComponent {
   runScraper() {
     this.searchAttempted = true;
 
-    this.http.post<any[]>('http://backendportfolio-env.eba-qts2efv7.us-east-1.elasticbeanstalk.com/api/scraper', { city: this.city }).subscribe(
+    this.http.post<any[]>(`${environment.apiBaseUrl}/scraper`, { city: this.city }).subscribe(
       res => {
         this.scrapeResults = res;
       },
