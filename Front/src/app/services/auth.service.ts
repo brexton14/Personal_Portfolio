@@ -8,7 +8,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post(`${environment.apiBaseUrl}/api/auth/login`, { username, password }, { responseType: 'text' });
+    return this.http.post(`${environment.apiBaseUrl}/auth/login`, { username, password }, { responseType: 'text' });
   }
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token'); //auth logic
