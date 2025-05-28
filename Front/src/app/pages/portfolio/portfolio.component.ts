@@ -27,7 +27,8 @@ export class PortfolioComponent {
     public authService: AuthService,
     private appComponent: AppComponent
   ) {}
-  runScraper() {
+  runScraper(event?: Event) {
+    event?.preventDefault();
     this.searchAttempted = true;
 
     this.http.post<any[]>(`https://BrextonPortBack.us-east-1.elasticbeanstalk.com/api/scraper`, { city: this.city }).subscribe(

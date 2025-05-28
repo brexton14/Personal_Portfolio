@@ -22,7 +22,7 @@
       <div class="chart-card">
         <h3>Web Data Scraper</h3>
 
-        <form (submit)="runScraper()" class="scraper-form">
+        <form (submit)="runScraper($event)" class="scraper-form">
           <input type="text" placeholder="Enter city..." [(ngModel)]="city" name="city" required>
           <p class="city-list">
             Available cities: Saint Petersburg, Tampa, Trinity, Wesley Chapel, Zephyrhills, Ybor, New Port Richey, Holiday, Brandon, Clearwater, Odessa
