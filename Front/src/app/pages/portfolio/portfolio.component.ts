@@ -27,7 +27,7 @@ export class PortfolioComponent {
     public authService: AuthService,
     private appComponent: AppComponent
   ) {}
-  runScraper(event?: Event) {
+  runScraper(event: Event) {
     event?.preventDefault();
     this.searchAttempted = true;
 
