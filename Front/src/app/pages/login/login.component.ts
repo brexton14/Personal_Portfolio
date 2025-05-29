@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, HttpClientModule],
+  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -21,7 +20,11 @@ export class LoginComponent {
     this.authService.login(this.username, this.password).subscribe({
       next: () => {
         localStorage.setItem('loggedIn', 'true');
-        this.router.navigate(['/portfolio']);
+        this.router.navigate(['/portfolio']).then(success => {
+          if (!success) {
+            console.error('Navigation to /portfolio failed.');
+          }
+        });
       },
       error: () => {
         alert('Invalid username or password.');
