@@ -11,18 +11,16 @@ import java.util.Map;
 @CrossOrigin(origins = "https://thebrextonexperience.com")
 public class ScraperController {
 
-    @PostMapping
-    public ResponseEntity<?> scrape(@RequestBody Map<String, String> payload) {
+    @GetMapping
+    public ResponseEntity<?> scrape(@RequestBody Map<String, String> payload) {// title, location, link
         String city = payload.get("city");
-
+        // checking if city matches list of cities
         if (city == null || city.isBlank()) {
             return ResponseEntity.badRequest().body(Map.of("error", "City is required"));
         }
-
+        // returning response either results or error 500
         try {
             List<Map<String, String>> results = CraigslistScraper.scrapeCity(city);
-            System.out.println("City requested: " + city);
-            System.out.println("Scraped results count: " + results.size());
             return ResponseEntity.ok(results);
         } catch (Exception e) {
             return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));

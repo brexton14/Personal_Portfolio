@@ -25,17 +25,17 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
         boolean usernameExists = userRepository.findByUsername(request.getUsername()).isPresent();
-        boolean emailExists = userRepository.findAll().stream().anyMatch(u -> u.getEmail().equals(request.getEmail()));
-
+        boolean emailExists = userRepository.findByEmail(request.getEmail()).isPresent();
+        //checking if the user or email is already in system
         if (usernameExists || emailExists) {
             return ResponseEntity.badRequest().body("Username or Email already exists");
         }
-
+        //creation of user and setting user/email/pass with encoder
         User newUser = new User();
         newUser.setUsername(request.getUsername());
         newUser.setEmail(request.getEmail());
         newUser.setPassword(passwordEncoder.encode(request.getPassword()));
-
+        //adding to repo and repsonse
         userRepository.save(newUser);
         return ResponseEntity.ok("User registered successfully");
     }

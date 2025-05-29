@@ -11,15 +11,15 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; //primary
 
     @Column(nullable = false, unique = true)
-    private String username;
+    private String username; //unique
+
+    @Column(nullable = false, unique = true)
+    private String email; //unique - prevents multiple accounts on one email
 
     @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false, unique = true)
-    private String email;
 
 }

@@ -23,7 +23,12 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/scraper").permitAll()
+                        .requestMatchers(
+                                "/api/auth/**",
+                                "/api/scraper",
+                                "/api/portfolio/**",
+                                "/api/data/**"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 );
 
@@ -36,7 +41,7 @@ public class SecurityConfig {
         config.setAllowedOrigins(List.of("https://thebrextonexperience.com"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
-        config.setAllowCredentials(true);
+        config.setAllowCredentials(true);// for future use of cookies or auth headers
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
