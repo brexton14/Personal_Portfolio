@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "https://thebrextonexperience.com") // Allow Angular to talk to backend
+@CrossOrigin(origins = "https://thebrextonexperience.com")
 public class AuthController {
 
     private final UserRepository userRepository;
