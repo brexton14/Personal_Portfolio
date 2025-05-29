@@ -27,7 +27,7 @@ export class RegisterComponent {
       password: this.password
     };
 
-    this.http.post(`https://BrextonPortBack.us-east-1.elasticbeanstalk.com/api/auth/register`, payload, { responseType: 'text' })
+    this.http.post(`https://brexportfol.us-east-1.elasticbeanstalk.com/api/auth/register`, payload, { responseType: 'text' })
       .subscribe({
         next: () => {
           this.successMessage = 'Account created successfully!';

@@ -31,7 +31,7 @@ export class PortfolioComponent {
     event?.preventDefault();
     this.searchAttempted = true;
 
-    this.http.post<any[]>(`https://BrextonPortBack.us-east-1.elasticbeanstalk.com/api/scraper`, { city: this.city }).subscribe(
+    this.http.post<any[]>(`https://brexportfol.us-east-1.elasticbeanstalk.com/api/scraper`, { city: this.city }).subscribe(
       res => {
         this.scrapeResults = res;
       },
