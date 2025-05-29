@@ -29,6 +29,7 @@ body {
   align-items: center;
   padding: 12px 24px;
   position: fixed;
+  top: 0;
   width: 100%;
   height: 56px;
   z-index: 1000;
@@ -179,20 +180,23 @@ body {
   border-color: var(--accent);
   box-shadow: 0 0 4px var(--accent);
 }
-.login-popup h2 {
+.login-popup h2,
+.register-container h2{
   margin-bottom: 20px;
   font-size: 24px;
   font-weight: 600;
   color: var(--text);
   text-align: center;
 }
-.login-popup label {
+.login-popup label,
+.register-container label{
   display: block;
   margin: 10px 0 6px;
   font-weight: 500;
   color: var(--subtext);
 }
-.login-popup input {
+.login-popup input,
+.register-container input{
   width: 100%;
   padding: 10px 12px;
   border: 1px solid var(--border);
@@ -202,7 +206,8 @@ body {
   background: #111;
   color: var(--text);
 }
-.login-popup button {
+.login-popup button,
+.register-container button{
   width: 100%;
   padding: 12px;
   background-color: #000;
@@ -214,7 +219,8 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-.login-popup button:hover {
+.login-popup button:hover,
+.register-container button:hover{
   background-color: #333;
 }
 
