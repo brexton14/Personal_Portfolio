@@ -31,15 +31,17 @@ export class PortfolioComponent {
     event?.preventDefault();
     this.searchAttempted = true;
 
-    this.http.post<any[]>(`https://brexportfol.us-east-1.elasticbeanstalk.com/api/scraper`, { city: this.city }).subscribe(
-      res => {
+    this.http.post<any[]>(`https://brexportfol.us-east-1.elasticbeanstalk.com/api/scraper`,
+      { city: this.city }
+    ).subscribe({
+      next: (res) => {
         this.scrapeResults = res;
       },
-      err => {
+      error: (err) => {
         this.scrapeResults = [];
         alert(err.error?.error || 'Something went wrong');
       }
-    );
+    });
   }
 
 

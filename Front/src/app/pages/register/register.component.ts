@@ -41,6 +41,10 @@ export class RegisterComponent {
       });
   }
   goHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/']).then(success => {
+      if (!success) {
+        console.error('Navigation to home failed');
+      }
+    });
   }
 }

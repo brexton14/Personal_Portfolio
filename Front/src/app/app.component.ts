@@ -33,7 +33,11 @@ export class AppComponent {
   // login modal
   logout() {
     localStorage.removeItem('loggedIn');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then(success => {
+      if (!success) {
+        console.error('Navigation to /login failed');
+      }
+    });
   }
   openLoginModal() {
     this.showLoginModal = true;
