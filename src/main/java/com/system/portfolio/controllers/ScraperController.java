@@ -12,7 +12,7 @@ import java.util.Map;
 public class ScraperController {
 
     @GetMapping
-    public ResponseEntity<?> scrape(@RequestBody Map<String, String> payload) {// title, location, link
+    public ResponseEntity<?> scrape(@RequestParam Map<String, String> payload) {// title, location, link
         String city = payload.get("city");
         // checking if city matches list of cities
         if (city == null || city.isBlank()) {

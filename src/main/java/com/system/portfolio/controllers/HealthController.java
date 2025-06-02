@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HealthController {
-    @GetMapping("/") // to check health of main backend page
+    @GetMapping("/health")
     public String health() {
         return "OK";
     }
