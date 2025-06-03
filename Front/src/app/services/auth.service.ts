@@ -7,7 +7,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post(`https://api.thebrextonexperience.com/auth/login`, { username, password }, { responseType: 'text' });
+    return this.http.post(`https://brexportfol.us-east-1.elasticbeanstalk.com/api/auth/login`, { username, password }, { responseType: 'text' });
   }
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token'); //auth logic
